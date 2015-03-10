@@ -1,4 +1,4 @@
-require 'Chatter.rb'
-require 'Chatter.config.ruby'
+require 'Chattur.rb'
+require 'Chattur.config.ruby'
 
-chattur = Chatter.new(ADRESS,PORT)
+chattur = Chatter.new
