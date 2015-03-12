@@ -1,4 +1,3 @@
-require 'Chattur.rb'
-require 'Chattur.config.ruby'
+require_relative 'Chattur.class.rb'
 
-chattur = Chatter.new
+chattur = Chattur.new
