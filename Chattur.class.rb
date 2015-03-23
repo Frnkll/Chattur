@@ -11,22 +11,22 @@ class Chattur
 		puts"Starting Chattur!"
 		@server_socket = TCPServer.open(HOST_PORT)
 		@listner_thread = Thread.new{listener}
-		main
 		puts "startup complete"
+		main		
 	end
 
 	def main
+		show_options
 		loop do
-			puts "Do you want to send a message? type \"message\""
-			puts "Do you want to exit? type \"exit\""
-			puts "Do you want to exit? type \"conection\""  
+			puts "type \"options\" to show a list of options"
 			
+			#main looper
 			input = gets.chomp
 			case input
 		        when "exit"
 	            	puts "Bye!"
 	            	close_connection
-	            	break
+	            	exit
 
 	            when "message"
 	            	unless @@connected == true
@@ -43,7 +43,7 @@ class Chattur
 	            	puts "Target_port: "
 	            	port = gets
 	            	set_connection(target_ip, port)
-	            	@connected = true
+	            	@@connected = true
 	            else
 	            	puts "helemaal niks nog"
 			end	
@@ -71,6 +71,11 @@ class Chattur
 		@sender_thread.exit
 		@server_socket.close
 		@listener_socket.close
+	end
+	def show_options
+		puts "Do you want to send a message? type \"message\"\r\n
+				Do you want to exit? type \"exit\"\r\n
+				Do you want to setup a connection? type \"connection\""
 	end
 
 end
